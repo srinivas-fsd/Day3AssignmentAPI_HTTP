@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title> 
+            JSON Objects Comparison 
+        </title>
+    </head>
+    <body>
+        <h1><center> Comparing 2 objects without considering property order : </center></h1>
+        <p align = "center">
+           <b> To view the comparison result, right click on this page and select "Inspect" and then go to "Console" </b>
+        </p>
+        <script>
+           var obj1 = {name : "Person 1", age : 5};
+           var obj2 = {age : 5, name : "Person 1"};
+
+            var flag=true;
+
+            if(Object.keys(obj1).length==Object.keys(obj2).length)
+            {
+                for(key in obj1) 
+                { 
+                    if(obj1[key] == obj2[key])
+                     {
+                        console.log("Object 1 : " , obj1[key]);
+                        console.log("Object 2 : " , obj2[key]);
+                        continue;
+                     }
+                    else 
+                     {
+                        console.log("Object 1 : " , obj1[key]);
+                        console.log("Object 2 : " , obj2[key]);
+                        flag=false;
+                        break;
+                     }
+                }
+            }
+            else 
+            {
+            flag=false;
+            }
+
+            if(flag==true)
+            {
+                console.log("Both JSON objects have SAME values");
+            }
+            else
+            {
+                console.log("Both JSON objects have DIFFERENT values");
+            }
+
+        </script>
+    </body>
+</html>

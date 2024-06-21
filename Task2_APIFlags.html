@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title> 
+            Flags Demo
+        </title>
+    </head>
+    <body>
+        <h1><center> Steps to View the Flags : </center></h1>
+        <p align = "center">
+           <h2> To view the flags, right click on this page  and select "Inspect" and then go to "Console".
+            You can view the flags by navigating to corresponding URL </h2>
+        </p>
+        <script>
+            var xhr =  new XMLHttpRequest();
+            xhr.open("GET","https://restcountries.com/v3.1/all",true);
+
+            xhr.onload = function()
+            {
+                if(xhr.status>=200 && xhr.status<300)
+                {
+                    var response = JSON.parse(xhr.responseText);
+                    var length = response.length;
+                    console.log("Total Flags : ", length);
+                    for(var i=0;i<length;i++)
+                    {
+                        console.log(response[i].flag);
+                        console.log(response[i].flags.png);
+                    }            
+                }
+                else
+                {
+                    console.log("Request failed, unable to get flags from server!");
+                }
+            }
+
+            xhr.send();
+
+        </script>
+    </body>
+</html>
